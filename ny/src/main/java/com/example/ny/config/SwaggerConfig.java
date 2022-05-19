@@ -11,33 +11,29 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-@EnableSwagger2
 @Configuration
+@EnableSwagger2
 public class SwaggerConfig {
 	
 	@Bean
 	public Docket api() {
 		return new Docket(DocumentationType.SWAGGER_2)
 				.select()
-				.apis(RequestHandlerSelectors.any())
+				.apis(RequestHandlerSelectors.basePackage("com.example.ny.controller"))
 				.paths(PathSelectors.any())
 				.build()
-				.groupName("API 1.0.0")
-				.pathMapping("/")
-				.apiInfo(apiInfo()) 
-                .useDefaultResponseMessages(false);
+				.apiInfo(apiInfo());
 	}
 	
 	private ApiInfo apiInfo() {
 		return new ApiInfoBuilder()
-				.title("TEST")
+				.title("나욘쓰 API")
 				.description("API TEST")
 				.version("1.0.0")
 				.termsOfServiceUrl("")
 				.license("")
 				.licenseUrl("")
-				.build()
-				;
+				.build();
 	}
 	
 }
