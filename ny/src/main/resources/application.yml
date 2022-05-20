@@ -1,10 +1,12 @@
 server:
   port: 8000
   servlet:
-    context-path: /
+    encoding:
+      charset: UTF-8
 
 spring:
   mvc:
     view:
-      prefix: /WEB-INF/views/
+      prefix: /WEB-INF/view/
       suffix: .jsp
+    static-path-pattern: /resources/**

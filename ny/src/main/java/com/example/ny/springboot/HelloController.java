@@ -10,7 +10,7 @@ public class HelloController {
 	@GetMapping(value = "/")
 	public String Hello(Model model) {
 		model.addAttribute("model", model);
-		return "index";
+		return "list";
 	}
 
 }

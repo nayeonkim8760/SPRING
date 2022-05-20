@@ -29,7 +29,7 @@ public class BoardController {
 	private BoardService boardService;
 
 	@ApiOperation(value = "게시글 전체 조회", notes = "게시글을 전체 조회한다.")
-	@GetMapping(value = "/list")
+	@GetMapping("/list")
 	@ResponseBody
 	public String list(Model model) {
 		List<BoardDTO> boards = boardService.findBoards();

@@ -12,6 +12,7 @@
 	<groupId>com.example</groupId>
 	<artifactId>ny</artifactId>
 	<name>ny</name>
+	<packaging>war</packaging>
 	<description>PRACTICE</description>
 	<properties>
 		<java.version>11</java.version>
@@ -223,5 +224,4 @@
 			</build>
 		</profile>
 	</profiles>
-
 </project>
