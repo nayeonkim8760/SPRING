@@ -23,7 +23,7 @@
 	          dataType: 'json',
 	          success: function(map){
 	                alert(map.message);
-	                if(map.status == 1){
+	                if(map.status == 200){
 	                	$('#movies').empty();
 	                    $.each(map.movies, function(i, movie){
 	                    	$('<tr>')
@@ -33,7 +33,7 @@
 	                        .append($('<td>').text(movie.star))
 	                        .appendTo('#movies');
 	                   })
-	                } else if(map.status == 0) {
+	                } else if(map.status == 500) {
 	                	$('#movies').empty();
 						$('<tr>')
 	                    .append($('<td colspan="4">').text('검색 결과 없음'))
@@ -55,7 +55,7 @@
 	                }),
 	                success: function(result){
 	                      alert(result.message);
-	                      if (result.status == 1){
+	                      if (result.status == 200){
 	                    	  $('#movies').empty();
 	                          $.each(result.movies, function(i, movie){
 								  $('<tr>')
@@ -65,7 +65,7 @@
 		                          .append($('<td>').text(movie.star))
 		                          .appendTo('#movies');
 	                          })
-	                      } else if(result.status == 0) {
+	                      } else if(result.status == 500) {
 	                    	  $('#movies').empty();
 	                            $('<tr>')
 	                            .append($('<td colspan="4">').text('검색 결과가 없습니다.'))

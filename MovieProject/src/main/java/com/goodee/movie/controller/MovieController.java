@@ -4,8 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,32 +35,31 @@ public class MovieController {
 		if (movies.size() == 0) {
 			map.put("message", "목록이 존재하지 않습니다.");
 			map.put("movies", null);
-			map.put("status", 0);
+			map.put("status", 200);
 		} else {
 			map.put("message", movies.size() + "개의 목록을 가져왔습니다.");
 			map.put("movies", movies);
-			map.put("status", 1);
+			map.put("status", 500);
 		}
 		return map;
 	}
 
-
 	@ResponseBody
-    @RequestMapping(value = "/searchMovie", method = RequestMethod.POST, produces = "application/json; charset=UTF-8")
-	public Map<String, Object> searchMovie(@RequestBody Map<String, Object> map, HttpServletRequest request) {
+	@RequestMapping(value = "/searchMovie", method = RequestMethod.POST, produces = "application/json; charset=UTF-8")
+	public Map<String, Object> searchMovie(@RequestBody Map<String, Object> map) {
 
 		Map<String, Object> result = new HashMap<>();
-		SecurityUtils.XSS(request.getParameter("searchText"));
+		SecurityUtils.XSS(map.get("searchText").toString());
 		List<Movie> movies = movieService.findMoviebyQuery(map);
 
 		if (movies.size() == 0) {
 			result.put("message", "목록이 존재하지 않습니다.");
 			result.put("movies", null);
-			result.put("status", 0);
+			result.put("status", 200);
 		} else {
 			result.put("message", movies.size() + "개의 목록을 가져왔습니다.");
 			result.put("movies", movies);
-			result.put("status", 1);
+			result.put("status", 500);
 		}
 
 		return result;
